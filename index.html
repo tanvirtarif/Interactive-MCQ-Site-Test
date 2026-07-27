@@ -389,7 +389,7 @@
 
 <script>
     // 🔗 গুগল অ্যাপস স্ক্রিপ্ট লিংক
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzthuuk2YbSBOXtnRfkdQkPyVtlaCIzM8_jHHTvCzM6Of3_vVOPEwRHe3AeIZ9VLg2c/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-Moo1UqtiC5dsuOyLeZkmODXIuCgVM1iFRSF5PqFyNusKaBwiJ6a5XRdID-0EZP1z/exec";
     const TEST_NAME = "DU B Model Test 01";
 
     // 🔴 IP Address collection with 2-second timeout (স্মুথ লোডিং নিশ্চিত করতে)
@@ -626,8 +626,13 @@
         });
 
         // 🔴 গুগল শিটে ফলাফল ও আইপি পাঠানো
+       // 🔴 গুগল শিটে বিস্তারিত স্কোর পাঠানো
         if (GOOGLE_SCRIPT_URL && !GOOGLE_SCRIPT_URL.includes("YOUR_GOOGLE")) {
-            const sendUrl = `${GOOGLE_SCRIPT_URL}?testName=${encodeURIComponent(TEST_NAME)}&name=${encodeURIComponent(studentData.name)}&roll=${encodeURIComponent(studentData.roll)}&mobile=${encodeURIComponent(studentData.mobile)}&email=${encodeURIComponent(studentData.email)}&bangla=${(sectionStats['bangla']?.score || 0).toFixed(2)}&english=${(sectionStats['english']?.score || 0).toFixed(2)}&gk=${(sectionStats['gk']?.score || 0).toFixed(2)}&totalScore=${totalScoreAll.toFixed(2)}&ip=${encodeURIComponent(userIP)}&device=${encodeURIComponent(deviceInfo)}`;
+            const ban = sectionStats['bangla'] || { correct: 0, wrong: 0, score: 0 };
+            const eng = sectionStats['english'] || { correct: 0, wrong: 0, score: 0 };
+            const gk = sectionStats['gk'] || { correct: 0, wrong: 0, score: 0 };
+
+            const sendUrl = `${GOOGLE_SCRIPT_URL}?testName=${encodeURIComponent(TEST_NAME)}&name=${encodeURIComponent(studentData.name)}&roll=${encodeURIComponent(studentData.roll)}&mobile=${encodeURIComponent(studentData.mobile)}&email=${encodeURIComponent(studentData.email)}&banRight=${ban.correct}&banWrong=${ban.wrong}&banScore=${ban.score.toFixed(2)}&engRight=${eng.correct}&engWrong=${eng.wrong}&engScore=${eng.score.toFixed(2)}&gkRight=${gk.correct}&gkWrong=${gk.wrong}&gkScore=${gk.score.toFixed(2)}&totalRight=${grandCorrect}&totalWrong=${grandWrong}&totalScore=${totalScoreAll.toFixed(2)}&ip=${encodeURIComponent(userIP)}`;
 
             fetch(sendUrl, { method: 'POST', mode: 'no-cors' });
         }
