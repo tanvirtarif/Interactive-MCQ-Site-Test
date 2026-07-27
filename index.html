@@ -371,7 +371,7 @@
 
 <script>
     // 🔗 গুগল অ্যাপস স্ক্রিপ্ট লিঙ্ক (আপনার লিঙ্কটি এখানে দিন)
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz6KJ4n59uUkuXYUFxYqHZ8YM_coP7xbiyYTYKV1OPoXYYxqJ8Dob5goZKKTp6jYhZY/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyPRq2VdNJwu-tE4nmjxGkgIDp1fl-6kLTvkXBbnb9FqLXbgludKz2GUodExozNA233/exec";
     const TEST_NAME = "DU B Model Test 01";
 
     // এক্সাম ডেটা (সেকশন, পাশ মার্ক এবং প্রশ্ন) 
@@ -408,6 +408,31 @@
             ]
         }
     ];
+    // গুগল শিট থেকে প্রশ্ন লোড করার ডায়নামিক ফাংশন
+async function fetchQuestionsFromGoogleSheet() {
+    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("YOUR_GOOGLE")) return;
+
+    try {
+        const response = await fetch(GOOGLE_SCRIPT_URL);
+        const fetchedQuestions = await response.json();
+
+        if (Array.isArray(fetchedQuestions) && fetchedQuestions.length > 0) {
+            // সেকশন অনুযায়ী প্রশ্নগুলোকে আলাদা করে সাজানো
+            examData.forEach(section => {
+                const sectionQuestions = fetchedQuestions.filter(q => q.sectionId === section.id);
+                if (sectionQuestions.length > 0) {
+                    section.questions = sectionQuestions;
+                }
+            });
+            console.log("গুগল শিট থেকে প্রশ্ন সফলভাবে লোড হয়েছে!");
+        }
+    } catch (error) {
+        console.warn("গুগল শিট থেকে প্রশ্ন লোড করা যায়নি, ডিফল্ট প্রশ্ন ব্যবহার করা হচ্ছে।", error);
+    }
+}
+
+// পেজ লোড হওয়ার সাথে সাথে গুগল শিট থেকে প্রশ্ন লোড হবে
+window.addEventListener('DOMContentLoaded', fetchQuestionsFromGoogleSheet);
 
     let timerInterval;
     let totalTime = 30 * 60; // 30 Minutes
