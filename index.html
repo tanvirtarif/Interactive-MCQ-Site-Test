@@ -3,115 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Mission MCQ Test - Correct Spelling</title>
+    <title>TEST MISSION Exclusive Exam Batch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #27ae60;
-            --danger-color: #e74c3c;
-            --bg-color: #f8f9fa;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --secondary: #475569;
+            --success: #10b981;
+            --danger: #ef4444;
+            --bg-color: #f1f5f9;
             --card-bg: #ffffff;
-            --text-color: #2c3e50;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        /* Header Style */
-        .site-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            background: var(--card-bg);
-            padding: 15px 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-        }
-
-        .site-header img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            border-radius: 50%;
-        }
-
-        .site-header h1 {
-            margin: 0;
-            font-size: 24px;
-            color: var(--primary-color);
-        }
-
-        /* Card screens */
+        /* Utility */
+        .hidden { display: none !important; }
+        .text-center { text-align: center; }
+        
+        /* Cards */
         .card {
             background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
-        .hidden {
-            display: none !important;
-        }
-
-        /* Static Info Badge */
-        .info-badge {
-            background-color: #eef2f6;
-            border-left: 4px solid #3b82f6;
-            padding: 12px 15px;
-            border-radius: 6px;
-            font-size: 16px;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        input[type="text"] {
+        /* Banner & Typography */
+        .banner-img {
             width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            border: 1px solid #ced4da;
-            border-radius: 6px;
-            box-sizing: border-box;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            background-color: #e2e8f0; /* Placeholder color */
         }
 
-        button {
-            background-color: var(--accent-color);
+        h1.main-title {
+            color: var(--primary);
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+        }
+
+        .sub-title { font-size: 20px; font-weight: 600; margin: 0 0 15px 0; color: var(--text-main); }
+        .info-text { font-size: 15px; color: var(--secondary); margin: 0 0 5px 0; }
+        
+        /* Form Inputs */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--secondary);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 15px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
             color: white;
             border: none;
-            padding: 12px 30px;
-            font-size: 18px;
-            border-radius: 6px;
+            padding: 14px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
             cursor: pointer;
             width: 100%;
-            transition: background 0.3s;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: inherit;
         }
 
-        button:hover {
-            background-color: #219150;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-small {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* Rules Box */
+        .rules-box {
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--secondary);
+            margin: 25px 0;
+            text-align: left;
         }
 
         /* Top Bar */
@@ -119,444 +154,292 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: var(--card-bg);
-            padding: 15px 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             position: sticky;
-            top: 10px;
+            top: 15px;
             z-index: 100;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .student-info { font-size: 14px; line-height: 1.4; }
+        .timer-box {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--danger);
+            background: #fef2f2;
+            padding: 5px 15px;
+            border-radius: 8px;
+            border: 1px solid #fecaca;
         }
 
-        .timer {
+        @media (max-width: 700px) {
+            .top-bar { flex-direction: column; gap: 10px; text-align: center; }
+        }
+
+        /* Questions */
+        .section-header {
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin: 30px 0 15px 0;
             font-size: 18px;
-            font-weight: bold;
-            color: var(--danger-color);
+            font-weight: 600;
         }
 
-        /* Question Options */
         .question-card {
             background: var(--card-bg);
             padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: border-color 0.2s;
         }
+        
+        .question-card:hover { border-color: #cbd5e1; }
 
         .question-title {
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 16px;
+            font-weight: 600;
             margin-bottom: 15px;
+            color: var(--text-main);
         }
 
-        .options-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .options-list li {
-            margin-bottom: 10px;
-        }
+        .options-list { list-style: none; padding: 0; margin: 0; }
+        .options-list li { margin-bottom: 10px; }
 
         .option-label {
             display: flex;
             align-items: center;
-            padding: 10px 15px;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.2s;
+            font-size: 15px;
         }
 
-        .option-label:hover {
-            background: #f1f5f9;
-        }
+        .option-label:hover { background: #f8fafc; border-color: #94a3b8; }
+        .option-label input { margin-right: 15px; transform: scale(1.2); }
 
-        .option-label input {
-            margin-right: 12px;
-        }
-
-        /* Results & Explanations */
-        .correct-answer {
-            background-color: #d1e7dd !important;
-            border-color: #a3cfbb !important;
-            color: #0f5132;
-        }
-
-        .wrong-answer {
-            background-color: #f8d7da !important;
-            border-color: #f5c6cb !important;
-            color: #842029;
-        }
+        .correct-answer { background-color: #ecfdf5 !important; border-color: #6ee7b7 !important; color: #047857; font-weight: 600; }
+        .wrong-answer { background-color: #fef2f2 !important; border-color: #fca5a5 !important; color: #b91c1c; }
 
         .explanation {
             margin-top: 15px;
             padding: 15px;
-            background-color: #eef2f6;
-            border-left: 4px solid #3b82f6;
-            border-radius: 4px;
+            background-color: #eff6ff;
+            border-left: 4px solid var(--primary);
+            border-radius: 6px;
+            font-size: 14px;
             display: none;
         }
 
-        .submit-btn {
-            margin-top: 10px;
-            margin-bottom: 40px;
+        /* Result Screen */
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
         }
+        .result-box {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .result-box h3 { margin: 0 0 10px 0; font-size: 16px; color: var(--secondary); }
+        .result-box .score { font-size: 24px; font-weight: 700; margin-bottom: 5px; }
+        
+        .status-pass { color: var(--success); font-weight: 600; }
+        .status-fail { color: var(--danger); font-weight: 600; }
+
+        /* Linktree Buttons */
+        .social-links { margin: 30px 0; }
+        .link-btn {
+            display: block;
+            background: #f1f5f9;
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+        }
+        .link-btn:hover { background: #e2e8f0; transform: scale(1.02); }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Header with Safe Fallback SVG Logo -->
-    <header class="site-header">
-        <img src="logo.png" alt="Logo" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'50\' height=\'50\' viewBox=\'0 0 50 50\'><circle cx=\'25\' cy=\'25\' r=\'25\' fill=\'%232c3e50\'/><text x=\'50%\' y=\'55%\' font-size=\'20\' fill=\'white\' text-anchor=\'middle\' dominant-baseline=\'middle\'>TM</text></svg>';">
-        <h1>Test Mission MCQ Test</h1>
-    </header>
-
-    <!-- Start Screen -->
-    <div id="start-screen" class="card">
-        <h2 style="text-align: center; margin-top: 0;">পরীক্ষায় অংশগ্রহণের তথ্য</h2>
+    
+    <!-- ================= START SCREEN ================= -->
+    <div id="start-screen" class="card text-center">
+        <!-- Banner Image Placeholder -->
+        <img src="banner.png" alt="Exam Banner" class="banner-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'200\'><rect width=\'800\' height=\'200\' fill=\'%23e2e8f0\'/><text x=\'50%\' y=\'50%\' font-size=\'24\' fill=\'%2364748b\' text-anchor=\'middle\' dominant-baseline=\'middle\'>Banner Placeholder (Upload banner.png)</text></svg>'">
         
-        <!-- বিষয় ও টপিক ইনফো -->
-        <div class="info-badge">
-            <strong>বিষয়:</strong> <span id="info-subject">English</span> | 
-            <strong>টপিক:</strong> <span id="info-topic">Correct Spelling</span>
+        <h1 class="main-title">TEST MISSION Exclusive Exam Batch by TanvirTarif</h1>
+        <h2 class="sub-title">DU B Model Test 01</h2>
+        <p class="info-text"><strong>বিষয়:</strong> বাংলা, English, ও সাধারণ জ্ঞান</p>
+        <p class="info-text"><strong>Topic:</strong> All</p>
+
+        <div class="rules-box">
+            <strong>পরীক্ষার নিয়মকানুন:</strong><br>
+            • মোট সময়: ৩০ মিনিট।<br>
+            • প্রতিটি সঠিক উত্তরের জন্য ১ নম্বর এবং ভুল উত্তরের জন্য ০.২৫ নম্বর কাটা হবে।<br>
+            • বাংলা (পাশ: ৫), ইংরেজি (পাশ: ৫), সাধারণ জ্ঞান (পাশ: ৮)।<br>
+            • নিচের ফর্মে আপনার সঠিক তথ্য দিন। <i>সম্মতি প্রদান করলেই কেবল 'Enter' বাটনে ক্লিক করুন।</i>
         </div>
 
-        <!-- নাম বা কোড ইনপুট -->
-        <div class="form-group">
-            <label for="user-name">আপনার নাম বা কোড লিখুন:</label>
-            <input type="text" id="user-name" placeholder="এখানে নাম বা কোড লিখুন..." required>
-        </div>
-
-        <p style="font-size: 14px; color: #555; text-align: center; margin-bottom: 20px;">
-            📝 মোট প্রশ্ন: <b>৪১ টি</b> | ⏱ প্রতি প্রশ্নে সময়: <b>২০ সেকেন্ড</b><br>
-            ✔️ সঠিক উত্তর: <b>+১.০০</b> | ❌ ভুল উত্তর: <b>-০.২৫</b>
-        </p>
-
-        <button onclick="startExam()">পরীক্ষা শুরু করুন</button>
+        <form id="entry-form" onsubmit="event.preventDefault(); startExam();">
+            <div class="form-grid text-left">
+                <div class="form-group">
+                    <label>শিক্ষার্থীর নাম *</label>
+                    <input type="text" id="stu-name" placeholder="আপনার পূর্ণ নাম" required>
+                </div>
+                <div class="form-group">
+                    <label>রোল বা কোড *</label>
+                    <input type="text" id="stu-roll" placeholder="রোল/কোড নম্বর" required>
+                </div>
+                <div class="form-group">
+                    <label>মোবাইল নম্বর (ঐচ্ছিক)</label>
+                    <input type="text" id="stu-mobile" placeholder="01XXXXXXXXX">
+                </div>
+                <div class="form-group">
+                    <label>ইমেইল (ঐচ্ছিক)</label>
+                    <input type="email" id="stu-email" placeholder="example@mail.com">
+                </div>
+            </div>
+            <button type="submit" class="btn-primary" style="margin-top: 25px;">Enter (পরীক্ষা শুরু করুন)</button>
+        </form>
     </div>
 
-    <!-- Exam Screen -->
+    <!-- ================= EXAM SCREEN ================= -->
     <div id="exam-screen" class="hidden">
         <div class="top-bar">
-            <div>
-                <strong>পরীক্ষার্থী:</strong> <span id="display-name"></span><br>
-                <small><strong>বিষয়/টপিক:</strong> <span id="display-subject-topic"></span></small>
+            <div class="student-info">
+                <strong><span id="display-name"></span></strong> (রোল: <span id="display-roll"></span>)<br>
+                <span style="color: var(--secondary); font-size: 13px;">DU B Model Test 01 | Topic: All</span>
             </div>
-            <div class="timer">সময় বাকি: <span id="timer">00:00</span></div>
+            <div class="timer-box" id="timer">30:00</div>
+            <div>
+                <button class="btn-small" onclick="checkAndSubmit()">Submit</button>
+            </div>
         </div>
 
-        <div id="questions-container"></div>
+        <div id="questions-container">
+            <!-- Questions injected via JS -->
+        </div>
 
-        <button class="submit-btn" onclick="submitExam()">পরীক্ষা সাবমিট করুন</button>
+        <button class="btn-primary" style="margin-bottom: 50px;" onclick="checkAndSubmit()">চূড়ান্ত সাবমিট করুন</button>
     </div>
 
-    <!-- Result Screen -->
-    <div id="result-screen" class="card hidden">
-        <h2 style="text-align: center;">পরীক্ষার ফলাফল</h2>
-        <div id="result-details"></div>
-        <button onclick="location.reload()" style="margin-top: 20px;">পুনরায় পরীক্ষা দিন</button>
+    <!-- ================= RESULT SUMMARY SCREEN ================= -->
+    <div id="result-summary-screen" class="card text-center hidden">
+        <h2 style="color: var(--primary); margin-top: 0;">পরীক্ষার ফলাফল</h2>
+        <h3 id="res-name" style="margin-bottom: 5px;"></h3>
+        
+        <div class="result-grid" id="section-results-container">
+            <!-- Section results injected via JS -->
+        </div>
+
+        <div class="card" style="background: var(--primary); color: white; padding: 20px;">
+            <h3 style="margin: 0 0 10px 0;">সর্বমোট ফলাফল</h3>
+            <div style="font-size: 32px; font-weight: bold;" id="total-score-display"></div>
+            <div style="font-size: 18px; margin-top: 5px;" id="total-status-display"></div>
+        </div>
+
+        <div class="social-links">
+            <h3 style="font-size: 16px; margin-bottom: 15px;">আমাদের সাথে যুক্ত হোন</h3>
+            <a href="#" class="link-btn">📘 Facebook Page</a>
+            <a href="#" class="link-btn">👥 Facebook Group</a>
+            <a href="#" class="link-btn">📺 YouTube Channel</a>
+        </div>
+
+        <button class="btn-primary" onclick="showReviewScreen()">উত্তর ও ব্যাখ্যা দেখুন</button>
     </div>
+
 </div>
 
 <script>
-    // 🔗 গুগল অ্যাপস স্ক্রিপ্ট থেকে পাওয়া Web App URL এখানে বসান
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby46wTDMOf_lQmqrkaheUM5qGBIOwa3n8_saowMetXf2Q9nzCDb0AKq29vv3rDQf9el/exec";
+    // 🔗 গুগল অ্যাপস স্ক্রিপ্ট লিঙ্ক (আপনার লিঙ্কটি এখানে দিন)
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz6KJ4n59uUkuXYUFxYqHZ8YM_coP7xbiyYTYKV1OPoXYYxqJ8Dob5goZKKTp6jYhZY/exec";
+    const TEST_NAME = "DU B Model Test 01";
 
-    const currentSubject = "English";
-    const currentTopic = "Correct Spelling";
-
-    // 🔴 IP Address ও Device Info (৩ সেকেন্ডের টাইমআউট সহ, যাতে ব্রাউজার আটকে না থাকে)
-    let userIP = "Unknown";
-    const deviceInfo = navigator.userAgent;
-
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 3000);
-
-    fetch('https://api.ipify.org?format=json', { signal: controller.signal })
-        .then(res => res.json())
-        .then(data => { 
-            userIP = data.ip; 
-            clearTimeout(timeoutId);
-        })
-        .catch(() => { 
-            userIP = "Unavailable"; 
-        });
-
-    // CSV ফাইল থেকে সংগৃহীত ৪১টি প্রশ্ন
-    const questionsData = [
+    // এক্সাম ডেটা (সেকশন, পাশ মার্ক এবং প্রশ্ন) 
+    // *নোট: ডেমো হিসেবে প্রতি সেকশনে ২-৩টি প্রশ্ন দেওয়া হলো, আপনি শিট/কোডে আরও যোগ করতে পারবেন*
+    const examData = [
         {
-            "question": "1. What is the correct spelling of 'Accommodation'?",
-            "options": ["Acommodation", "Accommodation", "Accomodation", "Accommoddation"],
-            "answer": 1,
-            "explanation": "Accommodation-এ দুটি 'c' ও দুটি 'm' আছে। accommodate + ion মনে রাখুন।"
+            id: "bangla",
+            name: "বাংলা",
+            passMark: 5,
+            questions: [
+                { q: "‘অগ্নি’ শব্দের সমার্থক শব্দ কোনটি?", options: ["অনল", "পবন", "সাগর", "গিরি"], ans: 0, exp: "অগ্নি এর সমার্থক শব্দ অনল, দহন, বহ্নি ইত্যাদি।" },
+                { q: "‘যা পূর্বে ছিল এখন নেই’ - এক কথায় কী হবে?", options: ["অভূতপূর্ব", "ভূতপূর্ব", "পূর্বজ", "অদৃষ্টপূর্ব"], ans: 1, exp: "সঠিক উত্তর ভূতপূর্ব।" },
+                { q: "সন্ধি বিচ্ছেদ করুন: ‘বিদ্যালয়’", options: ["বিদ্য + আলয়", "বিদ্যা + আলয়", "বিদ্য + লয়", "বিদ্যা + লয়"], ans: 1, exp: "বিদ্যা + আলয় = বিদ্যালয় (স্বরসন্ধি)।" }
+            ]
         },
         {
-            "question": "2. What is the correct spelling of 'Brilliant'?",
-            "options": ["Brillant", "Brilliant", "Briliant", "Brillyant"],
-            "answer": 1,
-            "explanation": "brill + iant, দুই 'l'।"
+            id: "english",
+            name: "English",
+            passMark: 5,
+            questions: [
+                { q: "What is the synonym of 'Intrepid'?", options: ["Fearless", "Cowardly", "Lazy", "Smart"], ans: 0, exp: "Intrepid means fearless or adventurous." },
+                { q: "Choose the correct spelling:", options: ["Accomodation", "Accommodation", "Acomodation", "Acommodation"], ans: 1, exp: "Double 'c' and double 'm'." },
+                { q: "He is good ___ English.", options: ["in", "at", "with", "about"], ans: 1, exp: "The correct preposition is 'good at'." }
+            ]
         },
         {
-            "question": "3. What is the correct spelling of 'Bulletin'?",
-            "options": ["Bulletin", "Bulliten", "Bulleton", "Bulletine"],
-            "answer": 0,
-            "explanation": "bullet + in, বুলেট ভিতরে আছে এমন।"
-        },
-        {
-            "question": "4. What is the correct spelling of 'Burglar'?",
-            "options": ["Burglar", "Burgler", "Burgalar", "Bueglar"],
-            "answer": 0,
-            "explanation": "burgle + ar, 'burgle' থেকে।"
-        },
-        {
-            "question": "5. What is the correct spelling of 'Challenge'?",
-            "options": ["Chalenge", "Challenge", "Challange", "Challinge"],
-            "answer": 1,
-            "explanation": "challenge এর মধ্যে 'all' আছে, চ্যালেঞ্জ।"
-        },
-        {
-            "question": "6. What is the correct spelling of 'Cigarette'?",
-            "options": ["Cigarette", "Cigarete", "Cigerette", "Cigarrete"],
-            "answer": 0,
-            "explanation": "cigar + ette, ফরাসি ছোট সিগার।"
-        },
-        {
-            "question": "7. What is the correct spelling of 'Colonel'?",
-            "options": ["Colonel", "Kernal", "Colonal", "Coronel"],
-            "answer": 0,
-            "explanation": "উচ্চারণ 'কার্নেল' কিন্তু বানান 'colo', মাঝে 'o'।"
-        },
-        {
-            "question": "8. What is the correct spelling of 'Commission'?",
-            "options": ["Comission", "Commission", "Commision", "Comission"],
-            "answer": 1,
-            "explanation": "com + mission, দুই 'm', দুই 's'।"
-        },
-        {
-            "question": "9. What is the correct spelling of 'Committee'?",
-            "options": ["Comittee", "Committee", "Commitee", "Comitte"],
-            "answer": 1,
-            "explanation": "commit + tee, তিনটি 't', 'm' দুটি।"
-        },
-        {
-            "question": "10. What is the correct spelling of 'Guerrilla'?",
-            "options": ["Guerilla", "Guerrilla", "Guerilla", "Guerrila"],
-            "answer": 1,
-            "explanation": "guerrilla - দুটি 'r', দুটি 'l'। গেরিলা যুদ্ধ।"
-        },
-        {
-            "question": "11. What is the correct spelling of 'Leisure'?",
-            "options": ["Liesure", "Leisure", "Lesure", "Leasure"],
-            "answer": 1,
-            "explanation": "lei + sure, 'lei' ফুলের মালা মনে রাখুন।"
-        },
-        {
-            "question": "12. What is the correct spelling of 'Maintenance'?",
-            "options": ["Maintanance", "Maintenance", "Maintenence", "Mentenance"],
-            "answer": 1,
-            "explanation": "main + ten + ance, maintain থেকে উৎপন্ন হলেও 'ten'।"
-        },
-        {
-            "question": "13. What is the correct spelling of 'Millennium'?",
-            "options": ["Millenium", "Millennium", "Milenium", "Milennium"],
-            "answer": 1,
-            "explanation": "mill + ennium, দুই 'l', দুই 'n'।"
-        },
-        {
-            "question": "14. What is the correct spelling of 'Misspell'?",
-            "options": ["Mispell", "Misspell", "Misspel", "Mispel"],
-            "answer": 1,
-            "explanation": "mis + spell, 's' দুটি।"
-        },
-        {
-            "question": "15. What is the correct spelling of 'Questionnaire'?",
-            "options": ["Questionaire", "Questionnaire", "Questionnair", "Questionare"],
-            "answer": 1,
-            "explanation": "question + naire, দুই 'n'।"
-        },
-        {
-            "question": "16. What is the correct spelling of 'Aberration'?",
-            "options": ["Aberation", "Aberration", "Abberation", "Abberration"],
-            "answer": 1,
-            "explanation": "ab + err + ation, দুটি 'r'।"
-        },
-        {
-            "question": "17. What is the correct spelling of 'Accessory'?",
-            "options": ["Accessory", "Acessory", "Accesory", "Accessery"],
-            "answer": 0,
-            "explanation": "access + ory, 'cc' ও 'ss'।"
-        },
-        {
-            "question": "18. What is the correct spelling of 'Acclivity'?",
-            "options": ["Acclivity", "Aclivity", "Acclavity", "Acclivety"],
-            "answer": 0,
-            "explanation": "ac + clivity, 'c' দুটি।"
-        },
-        {
-            "question": "19. What is the correct spelling of 'Amateur'?",
-            "options": ["Amature", "Amateur", "Amatuer", "Amaturee"],
-            "answer": 1,
-            "explanation": "ama + teur, ফরাসি শব্দ।"
-        },
-        {
-            "question": "20. What is the correct spelling of 'Ammunition'?",
-            "options": ["Amunition", "Ammunition", "Ammunision", "Amunision"],
-            "answer": 1,
-            "explanation": "ammo থেকে, 'mm'।"
-        },
-        {
-            "question": "21. What is the correct spelling of 'Anaemia'?",
-            "options": ["Anemia", "Anaemia", "Anemiaa", "Anaimia"],
-            "answer": 1,
-            "explanation": "an + aemia, 'ae' একসাথে।"
-        },
-        {
-            "question": "22. What is the correct spelling of 'Anesthesia'?",
-            "options": ["Anesthesia", "Anaesthesia", "Anesthesya", "Anaesthesya"],
-            "answer": 1,
-            "explanation": "an + esthesia, গ্রিক 'aisthesis'।"
-        },
-        {
-            "question": "23. What is the correct spelling of 'Apocalypse'?",
-            "options": ["Apocalipse", "Apocalypse", "Apocalypes", "Apocalipse"],
-            "answer": 1,
-            "explanation": "apo + calypse, 'c' পরে 'a'।"
-        },
-        {
-            "question": "24. What is the correct spelling of 'Archipelago'?",
-            "options": ["Archipelago", "Archipelago", "Archipeligo", "Archipelogo"],
-            "answer": 0,
-            "explanation": "archi + pelago, ইতালীয় 'arcipelago'।"
-        },
-        {
-            "question": "25. What is the correct spelling of 'Assassin'?",
-            "options": ["Asasin", "Assassin", "Assasin", "Asassin"],
-            "answer": 1,
-            "explanation": "ass + ass + in, দুটি 'ass'।"
-        },
-        {
-            "question": "26. What is the correct spelling of 'Avaricious'?",
-            "options": ["Avaricious", "Avariciouss", "Avarishous", "Avaricios"],
-            "answer": 0,
-            "explanation": "avarice + ious, 'c' পরে 'i'।"
-        },
-        {
-            "question": "27. What is the correct spelling of 'Besiege'?",
-            "options": ["Besiege", "Beseige", "Besege", "Besige"],
-            "answer": 0,
-            "explanation": "be + siege, 'ie'।"
-        },
-        {
-            "question": "28. What is the correct spelling of 'Bourgeois'?",
-            "options": ["Bourgeois", "Bourgeois", "Bourgeois", "Bourgeos"],
-            "answer": 0,
-            "explanation": "ফরাসি 'bourg' + 'eois'।"
-        },
-        {
-            "question": "29. What is the correct spelling of 'Camouflage'?",
-            "options": ["Camoflage", "Camouflage", "Camoufladge", "Camofladge"],
-            "answer": 1,
-            "explanation": "camou + flage, ফরাসি।"
-        },
-        {
-            "question": "30. What is the correct spelling of 'Celestial'?",
-            "options": ["Celestial", "Celestial", "Celestal", "Celestil"],
-            "answer": 1,
-            "explanation": "celes + tial, 'tial'।"
-        },
-        {
-            "question": "31. What is the correct spelling of 'Cemetery'?",
-            "options": ["Cemitery", "Cemetery", "Cemetary", "Cemitary"],
-            "answer": 1,
-            "explanation": "ceme + tery, সব 'e'।"
-        },
-        {
-            "question": "32. What is the correct spelling of 'Colonel'?",
-            "options": ["Colonel", "Kernal", "Colonal", "Coronel"],
-            "answer": 0,
-            "explanation": "উচ্চারণ 'কার্নেল' কিন্তু বানান 'colo', মাঝে 'o'।"
-        },
-        {
-            "question": "33. What is the correct spelling of 'Commemoration'?",
-            "options": ["Commemoration", "Commemmoration", "Comemoration", "Commemoretion"],
-            "answer": 0,
-            "explanation": "com + memor + ation, 'mm' দুবার।"
-        },
-        {
-            "question": "34. What is the correct spelling of 'Commencement'?",
-            "options": ["Commencement", "Commencement", "Commensement", "Comencement"],
-            "answer": 0,
-            "explanation": "commence + ment, 'mm'।"
-        },
-        {
-            "question": "35. What is the correct spelling of 'Commodity'?",
-            "options": ["Commodity", "Comodity", "Commoddity", "Commoditty"],
-            "answer": 0,
-            "explanation": "com + modity, 'mm'।"
-        },
-        {
-            "question": "36. What is the correct spelling of 'Complaisant'?",
-            "options": ["Complaisant", "Complacent", "Complaisent", "Complaisant"],
-            "answer": 0,
-            "explanation": "com + plaisant, 'ai'।"
-        },
-        {
-            "question": "37. What is the correct spelling of 'Contemporaneous'?",
-            "options": ["Contemporaneous", "Contemperaneous", "Contemporanious", "Contemporanous"],
-            "answer": 0,
-            "explanation": "con + tempor + aneous।"
-        },
-        {
-            "question": "38. What is the correct spelling of 'Contemptuous'?",
-            "options": ["Contemptuous", "Contemptious", "Contemptous", "Contemptiuous"],
-            "answer": 0,
-            "explanation": "contempt + uous।"
-        },
-        {
-            "question": "39. What is the correct spelling of 'Councillor'?",
-            "options": ["Councilor", "Councillor", "Counsillor", "Counciler"],
-            "answer": 1,
-            "explanation": "council + lor, 'll'।"
-        },
-        {
-            "question": "40. What is the correct spelling of 'Counterfeit'?",
-            "options": ["Counterfeit", "Counterfiet", "Counterfit", "Counterfeet"],
-            "answer": 0,
-            "explanation": "counter + feit, 'feit'।"
-        },
-        {
-            "question": "41. What is the correct spelling of 'Curriculum'?",
-            "options": ["Curriculum", "Curriculam", "Curriculm", "Curriculim"],
-            "answer": 0,
-            "explanation": "curri + culum, 'rr'।"
+            id: "gk",
+            name: "সাধারণ জ্ঞান",
+            passMark: 8,
+            questions: [
+                { q: "বাংলাদেশের স্বাধীনতা দিবস কবে?", options: ["১৬ ডিসেম্বর", "২৬ মার্চ", "২১ ফেব্রুয়ারি", "৭ মার্চ"], ans: 1, exp: "২৬ মার্চ বাংলাদেশের স্বাধীনতা দিবস।" },
+                { q: "বাংলাদেশের প্রথম রাষ্ট্রপতি কে ছিলেন?", options: ["তাজউদ্দীন আহমদ", "সৈয়দ নজরুল ইসলাম", "শেখ মুজিবুর রহমান", "জিয়াউর রহমান"], ans: 2, exp: "জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমান ছিলেন প্রথম রাষ্ট্রপতি।" },
+                { q: "সার্ক (SAARC) এর সদর দপ্তর কোথায়?", options: ["ঢাকা", "নয়াদিল্লি", "কাঠমান্ডু", "কলম্বো"], ans: 2, exp: "নেপালের রাজধানী কাঠমান্ডুতে সার্কের সদর দপ্তর অবস্থিত।" }
+            ]
         }
     ];
 
     let timerInterval;
-    const TIME_PER_QUESTION = 20;
-    let totalTime = questionsData.length * TIME_PER_QUESTION; 
+    let totalTime = 30 * 60; // 30 Minutes
     let hasSubmitted = false;
+    let studentData = {};
+    let sectionScores = {};
 
-    document.getElementById('info-subject').innerText = currentSubject;
-    document.getElementById('info-topic').innerText = currentTopic;
+    const optionLetters = ['A', 'B', 'C', 'D'];
+
+    // Array Shuffle Function (প্রশ্নের র‍্যান্ডমাইজেশনের জন্য)
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
 
     function startExam() {
-        const userName = document.getElementById('user-name').value.trim();
+        // Collect Data
+        studentData.name = document.getElementById('stu-name').value.trim();
+        studentData.roll = document.getElementById('stu-roll').value.trim();
+        studentData.mobile = document.getElementById('stu-mobile').value.trim();
+        studentData.email = document.getElementById('stu-email').value.trim();
 
-        if (!userName) {
-            alert('অনুগ্রহ করে আপনার নাম বা কোড লিখুন!');
-            return;
-        }
-
-        document.getElementById('display-name').innerText = userName;
-        document.getElementById('display-subject-topic').innerText = `${currentSubject} - ${currentTopic}`;
+        document.getElementById('display-name').innerText = studentData.name;
+        document.getElementById('display-roll').innerText = studentData.roll;
 
         document.getElementById('start-screen').classList.add('hidden');
         document.getElementById('exam-screen').classList.remove('hidden');
+
+        // প্রতিটি সেকশনের প্রশ্ন র‍্যান্ডমাইজ করা হচ্ছে
+        examData.forEach(section => shuffleArray(section.questions));
 
         renderQuestions();
         startTimer();
@@ -565,33 +448,40 @@
     function renderQuestions() {
         const container = document.getElementById('questions-container');
         let html = '';
+        let globalQIndex = 0;
 
-        questionsData.forEach((q, qIndex) => {
-            html += `
-                <div class="question-card" id="q-card-${qIndex}">
-                    <div class="question-title">${q.question}</div>
-                    <ul class="options-list">
-            `;
+        examData.forEach(section => {
+            html += `<div class="section-header">${section.name} অংশ</div>`;
             
-            q.options.forEach((opt, oIndex) => {
+            section.questions.forEach((q, i) => {
                 html += `
-                    <li>
-                        <label class="option-label" id="label-${qIndex}-${oIndex}">
-                            <input type="radio" name="q${qIndex}" value="${oIndex}">
-                            ${opt}
-                        </label>
-                    </li>
+                    <div class="question-card" id="q-card-${globalQIndex}">
+                        <div class="question-title">${i + 1}. ${q.q}</div>
+                        <ul class="options-list">
                 `;
-            });
+                
+                q.options.forEach((opt, oIndex) => {
+                    // input name এ সেকশন আইডি এবং ইনডেক্স রাখা হচ্ছে
+                    html += `
+                        <li>
+                            <label class="option-label" id="label-${globalQIndex}-${oIndex}">
+                                <input type="radio" name="${section.id}_q${i}" value="${oIndex}" data-global-idx="${globalQIndex}">
+                                <strong style="margin-right:10px;">${optionLetters[oIndex]}.</strong> ${opt}
+                            </label>
+                        </li>
+                    `;
+                });
 
-            html += `
-                    </ul>
-                    <div class="explanation" id="exp-${qIndex}">
-                        <strong>সঠিক উত্তর:</strong> ${q.options[q.answer]}<br><br>
-                        <strong>ব্যাখ্যা:</strong> ${q.explanation}
+                html += `
+                        </ul>
+                        <div class="explanation" id="exp-${globalQIndex}">
+                            <strong>সঠিক উত্তর:</strong> ${optionLetters[q.ans]}. ${q.options[q.ans]}<br><br>
+                            <strong>ব্যাখ্যা:</strong> ${q.exp}
+                        </div>
                     </div>
-                </div>
-            `;
+                `;
+                globalQIndex++;
+            });
         });
 
         container.innerHTML = html;
@@ -606,8 +496,8 @@
             if (totalTime <= 0) {
                 clearInterval(timerInterval);
                 if (!hasSubmitted) {
-                    alert('সময় শেষ! আপনার পরীক্ষা স্বয়ংক্রিয়ভাবে জমা নেওয়া হচ্ছে।');
-                    submitExam();
+                    alert('সময় শেষ! খাতা স্বয়ংক্রিয়ভাবে জমা নেওয়া হচ্ছে।');
+                    processSubmission();
                 }
             }
         }, 1000);
@@ -619,70 +509,132 @@
         document.getElementById('timer').innerText = `${m}:${s}`;
     }
 
-    function submitExam() {
+    // সাবমিট করার আগে চেক করা
+    function checkAndSubmit() {
         if (hasSubmitted) return;
+        
+        let totalQ = 0;
+        examData.forEach(s => totalQ += s.questions.length);
+        
+        const answered = document.querySelectorAll('input[type="radio"]:checked').length;
+        
+        if (answered < totalQ) {
+            const confirmSubmit = confirm(`আপনি ${totalQ} টি প্রশ্নের মধ্যে মাত্র ${answered} টির উত্তর দিয়েছেন। আপনি কি চূড়ান্ত সাবমিট করতে চান?`);
+            if (!confirmSubmit) return;
+        }
+        processSubmission();
+    }
+
+    function processSubmission() {
         hasSubmitted = true;
         clearInterval(timerInterval);
 
-        let correctCount = 0;
-        let wrongCount = 0;
-        let unattemptedCount = 0;
+        let totalScoreAll = 0;
+        let globalQIndex = 0;
 
-        questionsData.forEach((q, qIndex) => {
-            const selected = document.querySelector(`input[name="q${qIndex}"]:checked`);
-            
-            // সঠিক উত্তর সবুজ মার্ক করা
-            document.getElementById(`label-${qIndex}-${q.answer}`).classList.add('correct-answer');
-            
-            // ব্যাখ্যা দেখানো
-            document.getElementById(`exp-${qIndex}`).style.display = 'block';
+        examData.forEach(section => {
+            let correctCount = 0;
+            let wrongCount = 0;
 
-            if (selected) {
-                const selectedVal = parseInt(selected.value);
-                if (selectedVal === q.answer) {
-                    correctCount++;
-                } else {
-                    wrongCount++;
-                    // ভুল অপশন লাল মার্ক করা
-                    document.getElementById(`label-${qIndex}-${selectedVal}`).classList.add('wrong-answer');
+            section.questions.forEach((q, i) => {
+                const selected = document.querySelector(`input[name="${section.id}_q${i}"]:checked`);
+                
+                // মার্কিং (সঠিক উত্তর এবং ব্যাখ্যা)
+                document.getElementById(`label-${globalQIndex}-${q.ans}`).classList.add('correct-answer');
+                document.getElementById(`exp-${globalQIndex}`).style.display = 'block';
+
+                if (selected) {
+                    const selectedVal = parseInt(selected.value);
+                    if (selectedVal === q.ans) {
+                        correctCount++;
+                    } else {
+                        wrongCount++;
+                        document.getElementById(`label-${globalQIndex}-${selectedVal}`).classList.add('wrong-answer');
+                    }
                 }
-            } else {
-                unattemptedCount++;
-            }
 
-            // অপশন ব্লক করা
-            document.querySelectorAll(`input[name="q${qIndex}"]`).forEach(r => r.disabled = true);
+                // অপশন লক করা
+                document.querySelectorAll(`input[name="${section.id}_q${i}"]`).forEach(r => r.disabled = true);
+                globalQIndex++;
+            });
+
+            // সেকশন স্কোর ক্যালকুলেশন
+            const sectionScore = (correctCount * 1) - (wrongCount * 0.25);
+            sectionScores[section.id] = sectionScore;
+            totalScoreAll += sectionScore;
         });
 
-        const score = (correctCount * 1) - (wrongCount * 0.25);
-        const userName = document.getElementById('user-name').value.trim();
-
-        // 🔴 গুগল শিটে রেজাল্ট, আইপি এবং ডিভাইস ইনফো পাঠানো
+        // গুগল শিটে ডেটা পাঠানো
         if (GOOGLE_SCRIPT_URL && !GOOGLE_SCRIPT_URL.includes("YOUR_GOOGLE")) {
-            const sendUrl = `${GOOGLE_SCRIPT_URL}?name=${encodeURIComponent(userName)}&subject=${encodeURIComponent(currentSubject)}&topic=${encodeURIComponent(currentTopic)}&correct=${correctCount}&wrong=${wrongCount}&unattempted=${unattemptedCount}&score=${score.toFixed(2)}&ip=${encodeURIComponent(userIP)}&device=${encodeURIComponent(deviceInfo)}`;
+            const sendUrl = `${GOOGLE_SCRIPT_URL}?testName=${encodeURIComponent(TEST_NAME)}&name=${encodeURIComponent(studentData.name)}&roll=${encodeURIComponent(studentData.roll)}&mobile=${encodeURIComponent(studentData.mobile)}&email=${encodeURIComponent(studentData.email)}&bangla=${sectionScores['bangla'] || 0}&english=${sectionScores['english'] || 0}&gk=${sectionScores['gk'] || 0}&totalScore=${totalScoreAll.toFixed(2)}`;
 
-            fetch(sendUrl, {
-                method: 'POST',
-                mode: 'no-cors'
-            });
+            fetch(sendUrl, { method: 'POST', mode: 'no-cors' });
         }
 
-        // ফলাফল পেজ দেখানো
-        document.querySelector('.submit-btn').classList.add('hidden');
-        document.getElementById('result-screen').classList.remove('hidden');
+        generateResultSummary(totalScoreAll);
+    }
 
-        document.getElementById('result-details').innerHTML = `
-            <p><strong>পরীক্ষার্থীর নাম/কোড:</strong> ${userName}</p>
-            <p><strong>বিষয়:</strong> ${currentSubject} (${currentTopic})</p>
-            <p><strong>মোট প্রশ্ন:</strong> ${questionsData.length} টি</p>
-            <p><strong>সঠিক উত্তর:</strong> <span style="color: green; font-weight: bold;">${correctCount}</span> টি</p>
-            <p><strong>ভুল উত্তর:</strong> <span style="color: red; font-weight: bold;">${wrongCount}</span> টি</p>
-            <p><strong>উত্তর দেওয়া হয়নি:</strong> ${unattemptedCount} টি</p>
-            <hr>
-            <h3 style="color: var(--primary-color);">প্রাপ্ত নম্বর: ${score.toFixed(2)} / ${questionsData.length}</h3>
-            <p style="font-size: 13px; color: #666;">(নিচে স্ক্রল করে প্রতিটি প্রশ্নের সঠিক উত্তর ও ব্যাখ্যা দেখতে পারেন)</p>
-        `;
+    function generateResultSummary(totalScore) {
+        document.getElementById('exam-screen').classList.add('hidden');
+        const summaryScreen = document.getElementById('result-summary-screen');
+        summaryScreen.classList.remove('hidden');
 
+        document.getElementById('res-name').innerText = `${studentData.name} (রোল: ${studentData.roll})`;
+
+        const container = document.getElementById('section-results-container');
+        let html = '';
+        let allPassed = true;
+
+        examData.forEach(section => {
+            const score = sectionScores[section.id] || 0;
+            const isPass = score >= section.passMark;
+            if(!isPass) allPassed = false;
+
+            html += `
+                <div class="result-box">
+                    <h3>${section.name}</h3>
+                    <div class="score">${score.toFixed(2)}</div>
+                    <div class="${isPass ? 'status-pass' : 'status-fail'}">
+                        ${isPass ? '✅ Passed' : '❌ Failed'} (Pass: ${section.passMark})
+                    </div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+
+        document.getElementById('total-score-display').innerText = `${totalScore.toFixed(2)}`;
+        const totalStatus = document.getElementById('total-status-display');
+        
+        if(allPassed) {
+            totalStatus.innerText = "🎉 অভিনন্দন! আপনি সব বিষয়ে পাশ করেছেন।";
+        } else {
+            totalStatus.innerText = "⚠️ আপনি এক বা একাধিক বিষয়ে ফেল করেছেন।";
+            totalStatus.style.color = "#fecaca";
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showReviewScreen() {
+        document.getElementById('result-summary-screen').classList.add('hidden');
+        document.getElementById('exam-screen').classList.remove('hidden');
+        
+        // টপ বার ও সাবমিট বাটন লুকিয়ে "পুনরায় এক্সাম দিন" বাটন অ্যাড করা হচ্ছে
+        document.querySelector('.top-bar').style.display = 'none';
+        
+        const examScreen = document.getElementById('exam-screen');
+        // আগের সাবমিট বাটন রিমুভ
+        const oldSubmit = examScreen.querySelector('.btn-primary');
+        if(oldSubmit) oldSubmit.remove();
+
+        // নতুন রিটেক বাটন
+        const retakeBtn = document.createElement('button');
+        retakeBtn.className = 'btn-primary';
+        retakeBtn.style.marginBottom = '50px';
+        retakeBtn.innerText = '🔄 পুনরায় এক্সাম দিন';
+        retakeBtn.onclick = () => location.reload();
+        
+        examScreen.appendChild(retakeBtn);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
