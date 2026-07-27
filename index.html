@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEST MISSION Exclusive Exam Batch</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Hind Siliguri Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #2563eb;
@@ -12,6 +13,7 @@
             --secondary: #475569;
             --success: #10b981;
             --danger: #ef4444;
+            --warning: #f59e0b;
             --bg-color: #f1f5f9;
             --card-bg: #ffffff;
             --text-main: #0f172a;
@@ -20,7 +22,7 @@
         }
 
         body {
-            font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
+            font-family: 'Hind Siliguri', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
@@ -37,6 +39,7 @@
         /* Utility */
         .hidden { display: none !important; }
         .text-center { text-align: center; }
+        .text-left { text-align: left; }
         
         /* Cards */
         .card {
@@ -55,7 +58,7 @@
             object-fit: cover;
             border-radius: 12px;
             margin-bottom: 20px;
-            background-color: #e2e8f0; /* Placeholder color */
+            background-color: #e2e8f0;
         }
 
         h1.main-title {
@@ -135,6 +138,7 @@
             font-weight: 600;
             cursor: pointer;
             font-size: 14px;
+            font-family: inherit;
         }
 
         /* Rules Box */
@@ -143,7 +147,7 @@
             border: 1px dashed #cbd5e1;
             padding: 15px;
             border-radius: 8px;
-            font-size: 13px;
+            font-size: 14px;
             color: var(--secondary);
             margin: 25px 0;
             text-align: left;
@@ -243,22 +247,34 @@
         /* Result Screen */
         .result-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 15px;
             margin: 25px 0;
         }
         .result-box {
             background: #f8fafc;
             border: 1px solid var(--border-color);
-            padding: 20px;
+            padding: 18px;
             border-radius: 12px;
-            text-align: center;
+            text-align: left;
         }
-        .result-box h3 { margin: 0 0 10px 0; font-size: 16px; color: var(--secondary); }
-        .result-box .score { font-size: 24px; font-weight: 700; margin-bottom: 5px; }
+        .result-box h3 { margin: 0 0 10px 0; font-size: 18px; color: var(--primary); text-align: center; }
+        .result-box .score { font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 8px; }
+        .result-box .details { font-size: 13px; color: var(--secondary); line-height: 1.6; border-top: 1px solid var(--border-color); padding-top: 8px; }
         
-        .status-pass { color: var(--success); font-weight: 600; }
-        .status-fail { color: var(--danger); font-weight: 600; }
+        .status-pass { color: var(--success); font-weight: 600; text-align: center; margin-bottom: 5px; }
+        .status-fail { color: var(--danger); font-weight: 600; text-align: center; margin-bottom: 5px; }
+
+        /* Total Score Box Details */
+        .total-details-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px rgba(255, 255, 255, 0.2) solid;
+            font-size: 14px;
+        }
 
         /* Linktree Buttons */
         .social-links { margin: 30px 0; }
@@ -274,7 +290,7 @@
             border: 1px solid var(--border-color);
             transition: all 0.2s;
         }
-        .link-btn:hover { background: #e2e8f0; transform: scale(1.02); }
+        .link-btn:hover { background: #e2e8f0; transform: scale(1.01); }
     </style>
 </head>
 <body>
@@ -283,7 +299,6 @@
     
     <!-- ================= START SCREEN ================= -->
     <div id="start-screen" class="card text-center">
-        <!-- Banner Image Placeholder -->
         <img src="banner.png" alt="Exam Banner" class="banner-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'200\'><rect width=\'800\' height=\'200\' fill=\'%23e2e8f0\'/><text x=\'50%\' y=\'50%\' font-size=\'24\' fill=\'%2364748b\' text-anchor=\'middle\' dominant-baseline=\'middle\'>Banner Placeholder (Upload banner.png)</text></svg>'">
         
         <h1 class="main-title">TEST MISSION Exclusive Exam Batch by TanvirTarif</h1>
@@ -294,7 +309,7 @@
         <div class="rules-box">
             <strong>পরীক্ষার নিয়মকানুন:</strong><br>
             • মোট সময়: ৩০ মিনিট।<br>
-            • প্রতিটি সঠিক উত্তরের জন্য ১ নম্বর এবং ভুল উত্তরের জন্য ০.২৫ নম্বর কাটা হবে।<br>
+            • প্রতিটি সঠিক উত্তরের জন্য ১ নম্বর এবং ভুল উত্তরের জন্য ০.২৫ নম্বর কাটা যাবে।<br>
             • বাংলা (পাশ: ৫), ইংরেজি (পাশ: ৫), সাধারণ জ্ঞান (পাশ: ৮)।<br>
             • নিচের ফর্মে আপনার সঠিক তথ্য দিন। <i>সম্মতি প্রদান করলেই কেবল 'Enter' বাটনে ক্লিক করুন।</i>
         </div>
@@ -335,9 +350,7 @@
             </div>
         </div>
 
-        <div id="questions-container">
-            <!-- Questions injected via JS -->
-        </div>
+        <div id="questions-container"></div>
 
         <button class="btn-primary" style="margin-bottom: 50px;" onclick="checkAndSubmit()">চূড়ান্ত সাবমিট করুন</button>
     </div>
@@ -347,14 +360,19 @@
         <h2 style="color: var(--primary); margin-top: 0;">পরীক্ষার ফলাফল</h2>
         <h3 id="res-name" style="margin-bottom: 5px;"></h3>
         
-        <div class="result-grid" id="section-results-container">
-            <!-- Section results injected via JS -->
-        </div>
+        <div class="result-grid" id="section-results-container"></div>
 
         <div class="card" style="background: var(--primary); color: white; padding: 20px;">
-            <h3 style="margin: 0 0 10px 0;">সর্বমোট ফলাফল</h3>
-            <div style="font-size: 32px; font-weight: bold;" id="total-score-display"></div>
+            <h3 style="margin: 0 0 5px 0;">সর্বমোট ফলাফল</h3>
+            <div style="font-size: 32px; font-weight: bold;" id="total-score-display">0.00</div>
             <div style="font-size: 18px; margin-top: 5px;" id="total-status-display"></div>
+            
+            <!-- মোটের বিস্তারিত হিসাব -->
+            <div class="total-details-grid">
+                <div>✔️ সঠিক: <b id="total-correct-display">0</b></div>
+                <div>❌ ভুল: <b id="total-wrong-display">0</b></div>
+                <div>⚪ অনুত্তরিত: <b id="total-unattempted-display">0</b></div>
+            </div>
         </div>
 
         <div class="social-links">
@@ -370,13 +388,24 @@
 </div>
 
 <script>
-    // 🔗 গুগল অ্যাপস স্ক্রিপ্ট লিঙ্ক (আপনার লিঙ্কটি এখানে দিন)
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyPRq2VdNJwu-tE4nmjxGkgIDp1fl-6kLTvkXBbnb9FqLXbgludKz2GUodExozNA233/exec";
+    // 🔗 গুগল অ্যাপস স্ক্রিপ্ট লিংক
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzthuuk2YbSBOXtnRfkdQkPyVtlaCIzM8_jHHTvCzM6Of3_vVOPEwRHe3AeIZ9VLg2c/exec";
     const TEST_NAME = "DU B Model Test 01";
 
-    // এক্সাম ডেটা (সেকশন, পাশ মার্ক এবং প্রশ্ন) 
-    // *নোট: ডেমো হিসেবে প্রতি সেকশনে ২-৩টি প্রশ্ন দেওয়া হলো, আপনি শিট/কোডে আরও যোগ করতে পারবেন*
-    const examData = [
+    // 🔴 IP Address collection with 2-second timeout (স্মুথ লোডিং নিশ্চিত করতে)
+    let userIP = "Unknown";
+    const deviceInfo = navigator.userAgent;
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 2000);
+
+    fetch('https://api.ipify.org?format=json', { signal: controller.signal })
+        .then(res => res.json())
+        .then(data => { userIP = data.ip; clearTimeout(timeoutId); })
+        .catch(() => { userIP = "Unavailable"; });
+
+    // ডিফল্ট এক্সাম ডেটা
+    let examData = [
         {
             id: "bangla",
             name: "বাংলা",
@@ -408,41 +437,15 @@
             ]
         }
     ];
-    // গুগল শিট থেকে প্রশ্ন লোড করার ডায়নামিক ফাংশন
-async function fetchQuestionsFromGoogleSheet() {
-    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("YOUR_GOOGLE")) return;
-
-    try {
-        const response = await fetch(GOOGLE_SCRIPT_URL);
-        const fetchedQuestions = await response.json();
-
-        if (Array.isArray(fetchedQuestions) && fetchedQuestions.length > 0) {
-            // সেকশন অনুযায়ী প্রশ্নগুলোকে আলাদা করে সাজানো
-            examData.forEach(section => {
-                const sectionQuestions = fetchedQuestions.filter(q => q.sectionId === section.id);
-                if (sectionQuestions.length > 0) {
-                    section.questions = sectionQuestions;
-                }
-            });
-            console.log("গুগল শিট থেকে প্রশ্ন সফলভাবে লোড হয়েছে!");
-        }
-    } catch (error) {
-        console.warn("গুগল শিট থেকে প্রশ্ন লোড করা যায়নি, ডিফল্ট প্রশ্ন ব্যবহার করা হচ্ছে।", error);
-    }
-}
-
-// পেজ লোড হওয়ার সাথে সাথে গুগল শিট থেকে প্রশ্ন লোড হবে
-window.addEventListener('DOMContentLoaded', fetchQuestionsFromGoogleSheet);
 
     let timerInterval;
-    let totalTime = 30 * 60; // 30 Minutes
+    let totalTime = 30 * 60;
     let hasSubmitted = false;
     let studentData = {};
-    let sectionScores = {};
+    let sectionStats = {}; // সেকশন ভিত্তিক পরিসংখ্যান
 
     const optionLetters = ['A', 'B', 'C', 'D'];
 
-    // Array Shuffle Function (প্রশ্নের র‍্যান্ডমাইজেশনের জন্য)
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -450,8 +453,28 @@ window.addEventListener('DOMContentLoaded', fetchQuestionsFromGoogleSheet);
         }
     }
 
+    // গুগল শিট থেকে প্রশ্ন লোড করার ফাংশন
+    async function fetchQuestionsFromGoogleSheet() {
+        if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("YOUR_GOOGLE")) return;
+
+        try {
+            const response = await fetch(GOOGLE_SCRIPT_URL);
+            const fetchedQuestions = await response.json();
+
+            if (Array.isArray(fetchedQuestions) && fetchedQuestions.length > 0) {
+                examData.forEach(section => {
+                    const sectionQs = fetchedQuestions.filter(q => q.sectionId === section.id);
+                    if (sectionQs.length > 0) section.questions = sectionQs;
+                });
+            }
+        } catch (e) {
+            console.log("গুগল শিট থেকে প্রশ্ন লোড হয়নি, ব্যাকআপ প্রশ্ন ব্যবহৃত হচ্ছে।");
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', fetchQuestionsFromGoogleSheet);
+
     function startExam() {
-        // Collect Data
         studentData.name = document.getElementById('stu-name').value.trim();
         studentData.roll = document.getElementById('stu-roll').value.trim();
         studentData.mobile = document.getElementById('stu-mobile').value.trim();
@@ -463,7 +486,6 @@ window.addEventListener('DOMContentLoaded', fetchQuestionsFromGoogleSheet);
         document.getElementById('start-screen').classList.add('hidden');
         document.getElementById('exam-screen').classList.remove('hidden');
 
-        // প্রতিটি সেকশনের প্রশ্ন র‍্যান্ডমাইজ করা হচ্ছে
         examData.forEach(section => shuffleArray(section.questions));
 
         renderQuestions();
@@ -486,7 +508,6 @@ window.addEventListener('DOMContentLoaded', fetchQuestionsFromGoogleSheet);
                 `;
                 
                 q.options.forEach((opt, oIndex) => {
-                    // input name এ সেকশন আইডি এবং ইনডেক্স রাখা হচ্ছে
                     html += `
                         <li>
                             <label class="option-label" id="label-${globalQIndex}-${oIndex}">
@@ -521,7 +542,7 @@ window.addEventListener('DOMContentLoaded', fetchQuestionsFromGoogleSheet);
             if (totalTime <= 0) {
                 clearInterval(timerInterval);
                 if (!hasSubmitted) {
-                    alert('সময় শেষ! খাতা স্বয়ংক্রিয়ভাবে জমা নেওয়া হচ্ছে।');
+                    alert('সময় শেষ! খাতা স্বয়ংক্রিয়ভাবে জমা নেওয়া হচ্ছে।');
                     processSubmission();
                 }
             }
@@ -534,7 +555,6 @@ window.addEventListener('DOMContentLoaded', fetchQuestionsFromGoogleSheet);
         document.getElementById('timer').innerText = `${m}:${s}`;
     }
 
-    // সাবমিট করার আগে চেক করা
     function checkAndSubmit() {
         if (hasSubmitted) return;
         
@@ -557,14 +577,18 @@ window.addEventListener('DOMContentLoaded', fetchQuestionsFromGoogleSheet);
         let totalScoreAll = 0;
         let globalQIndex = 0;
 
+        let grandCorrect = 0;
+        let grandWrong = 0;
+        let grandUnattempted = 0;
+
         examData.forEach(section => {
             let correctCount = 0;
             let wrongCount = 0;
+            let unattemptedCount = 0;
 
             section.questions.forEach((q, i) => {
                 const selected = document.querySelector(`input[name="${section.id}_q${i}"]:checked`);
                 
-                // মার্কিং (সঠিক উত্তর এবং ব্যাখ্যা)
                 document.getElementById(`label-${globalQIndex}-${q.ans}`).classList.add('correct-answer');
                 document.getElementById(`exp-${globalQIndex}`).style.display = 'block';
 
@@ -576,30 +600,42 @@ window.addEventListener('DOMContentLoaded', fetchQuestionsFromGoogleSheet);
                         wrongCount++;
                         document.getElementById(`label-${globalQIndex}-${selectedVal}`).classList.add('wrong-answer');
                     }
+                } else {
+                    unattemptedCount++;
                 }
 
-                // অপশন লক করা
                 document.querySelectorAll(`input[name="${section.id}_q${i}"]`).forEach(r => r.disabled = true);
                 globalQIndex++;
             });
 
-            // সেকশন স্কোর ক্যালকুলেশন
             const sectionScore = (correctCount * 1) - (wrongCount * 0.25);
-            sectionScores[section.id] = sectionScore;
+            
+            // সেকশনের পরিসংখ্যান সেভ
+            sectionStats[section.id] = {
+                score: sectionScore,
+                correct: correctCount,
+                wrong: wrongCount,
+                unattempted: unattemptedCount,
+                total: section.questions.length
+            };
+
             totalScoreAll += sectionScore;
+            grandCorrect += correctCount;
+            grandWrong += wrongCount;
+            grandUnattempted += unattemptedCount;
         });
 
-        // গুগল শিটে ডেটা পাঠানো
+        // 🔴 গুগল শিটে ফলাফল ও আইপি পাঠানো
         if (GOOGLE_SCRIPT_URL && !GOOGLE_SCRIPT_URL.includes("YOUR_GOOGLE")) {
-            const sendUrl = `${GOOGLE_SCRIPT_URL}?testName=${encodeURIComponent(TEST_NAME)}&name=${encodeURIComponent(studentData.name)}&roll=${encodeURIComponent(studentData.roll)}&mobile=${encodeURIComponent(studentData.mobile)}&email=${encodeURIComponent(studentData.email)}&bangla=${sectionScores['bangla'] || 0}&english=${sectionScores['english'] || 0}&gk=${sectionScores['gk'] || 0}&totalScore=${totalScoreAll.toFixed(2)}`;
+            const sendUrl = `${GOOGLE_SCRIPT_URL}?testName=${encodeURIComponent(TEST_NAME)}&name=${encodeURIComponent(studentData.name)}&roll=${encodeURIComponent(studentData.roll)}&mobile=${encodeURIComponent(studentData.mobile)}&email=${encodeURIComponent(studentData.email)}&bangla=${(sectionStats['bangla']?.score || 0).toFixed(2)}&english=${(sectionStats['english']?.score || 0).toFixed(2)}&gk=${(sectionStats['gk']?.score || 0).toFixed(2)}&totalScore=${totalScoreAll.toFixed(2)}&ip=${encodeURIComponent(userIP)}&device=${encodeURIComponent(deviceInfo)}`;
 
             fetch(sendUrl, { method: 'POST', mode: 'no-cors' });
         }
 
-        generateResultSummary(totalScoreAll);
+        generateResultSummary(totalScoreAll, grandCorrect, grandWrong, grandUnattempted);
     }
 
-    function generateResultSummary(totalScore) {
+    function generateResultSummary(totalScore, grandCorrect, grandWrong, grandUnattempted) {
         document.getElementById('exam-screen').classList.add('hidden');
         const summaryScreen = document.getElementById('result-summary-screen');
         summaryScreen.classList.remove('hidden');
@@ -611,25 +647,34 @@ window.addEventListener('DOMContentLoaded', fetchQuestionsFromGoogleSheet);
         let allPassed = true;
 
         examData.forEach(section => {
-            const score = sectionScores[section.id] || 0;
-            const isPass = score >= section.passMark;
+            const stat = sectionStats[section.id] || { score: 0, correct: 0, wrong: 0, unattempted: 0, total: 0 };
+            const isPass = stat.score >= section.passMark;
             if(!isPass) allPassed = false;
 
             html += `
                 <div class="result-box">
                     <h3>${section.name}</h3>
-                    <div class="score">${score.toFixed(2)}</div>
+                    <div class="score">${stat.score.toFixed(2)} / ${stat.total}</div>
                     <div class="${isPass ? 'status-pass' : 'status-fail'}">
                         ${isPass ? '✅ Passed' : '❌ Failed'} (Pass: ${section.passMark})
+                    </div>
+                    <div class="details">
+                        ✔️ সঠিক: <b>${stat.correct}</b> টি<br>
+                        ❌ ভুল: <b>${stat.wrong}</b> টি<br>
+                        ⚪ অনুত্তরিত: <b>${stat.unattempted}</b> টি
                     </div>
                 </div>
             `;
         });
         container.innerHTML = html;
 
+        // মোটের বিস্তারিত অংশ আপডেট
         document.getElementById('total-score-display').innerText = `${totalScore.toFixed(2)}`;
+        document.getElementById('total-correct-display').innerText = `${grandCorrect}`;
+        document.getElementById('total-wrong-display').innerText = `${grandWrong}`;
+        document.getElementById('total-unattempted-display').innerText = `${grandUnattempted}`;
+
         const totalStatus = document.getElementById('total-status-display');
-        
         if(allPassed) {
             totalStatus.innerText = "🎉 অভিনন্দন! আপনি সব বিষয়ে পাশ করেছেন।";
         } else {
@@ -644,15 +689,12 @@ window.addEventListener('DOMContentLoaded', fetchQuestionsFromGoogleSheet);
         document.getElementById('result-summary-screen').classList.add('hidden');
         document.getElementById('exam-screen').classList.remove('hidden');
         
-        // টপ বার ও সাবমিট বাটন লুকিয়ে "পুনরায় এক্সাম দিন" বাটন অ্যাড করা হচ্ছে
         document.querySelector('.top-bar').style.display = 'none';
         
         const examScreen = document.getElementById('exam-screen');
-        // আগের সাবমিট বাটন রিমুভ
         const oldSubmit = examScreen.querySelector('.btn-primary');
         if(oldSubmit) oldSubmit.remove();
 
-        // নতুন রিটেক বাটন
         const retakeBtn = document.createElement('button');
         retakeBtn.className = 'btn-primary';
         retakeBtn.style.marginBottom = '50px';
