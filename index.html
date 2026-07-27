@@ -15,6 +15,18 @@
         }
 
         body {
+            <!-- ব্যাকগ্রাউন্ডে ডাটা পাঠানোর জন্য হিডেন ফর্ম ও আইফ্রেম -->
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+<form id="gsheet-form" method="POST" target="hidden_iframe" style="display:none;">
+    <input type="hidden" name="name" id="gf-name">
+    <input type="hidden" name="subject" id="gf-subject">
+    <input type="hidden" name="topic" id="gf-topic">
+    <input type="hidden" name="correct" id="gf-correct">
+    <input type="hidden" name="wrong" id="gf-wrong">
+    <input type="hidden" name="unattempted" id="gf-unattempted">
+    <input type="hidden" name="score" id="gf-score">
+</form>
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -643,23 +655,20 @@
 
         // গুগল শিটে রেজাল্ট পাঠানো (যদি লিঙ্ক দেওয়া থাকে)
        // গুগল শিটে রেজাল্ট পাঠানো
+        // গুগল শিটে ফর্ম ডেটা অ্যাসিনক্রোনাসলি পাঠানো
         if (GOOGLE_SCRIPT_URL && !GOOGLE_SCRIPT_URL.includes("YOUR_GOOGLE")) {
-            const formData = new URLSearchParams();
-            formData.append("name", userName);
-            formData.append("subject", currentSubject);
-            formData.append("topic", currentTopic);
-            formData.append("correct", correctCount);
-            formData.append("wrong", wrongCount);
-            formData.append("unattempted", unattemptedCount);
-            formData.append("score", score.toFixed(2));
+            const form = document.getElementById('gsheet-form');
+            form.action = GOOGLE_SCRIPT_URL;
 
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: formData.toString()
-            })
-            .then(response => console.log("Result saved successfully!"))
-            .catch(error => console.error("Error saving result:", error));
+            document.getElementById('gf-name').value = userName;
+            document.getElementById('gf-subject').value = currentSubject;
+            document.getElementById('gf-topic').value = currentTopic;
+            document.getElementById('gf-correct').value = correctCount;
+            document.getElementById('gf-wrong').value = wrongCount;
+            document.getElementById('gf-unattempted').value = unattemptedCount;
+            document.getElementById('gf-score').value = score.toFixed(2);
+
+            form.submit(); // কোনো CORS এরর ছাড়াই ব্যাকগ্রাউন্ডে জমা হয়ে যাবে
         }
 
         // ফলাফল প্রদর্শন
