@@ -15,18 +15,6 @@
         }
 
         body {
-            <!-- ব্যাকগ্রাউন্ডে ডাটা পাঠানোর জন্য হিডেন ফর্ম ও আইফ্রেম -->
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-
-<form id="gsheet-form" method="POST" target="hidden_iframe" style="display:none;">
-    <input type="hidden" name="name" id="gf-name">
-    <input type="hidden" name="subject" id="gf-subject">
-    <input type="hidden" name="topic" id="gf-topic">
-    <input type="hidden" name="correct" id="gf-correct">
-    <input type="hidden" name="wrong" id="gf-wrong">
-    <input type="hidden" name="unattempted" id="gf-unattempted">
-    <input type="hidden" name="score" id="gf-score">
-</form>
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -244,7 +232,7 @@
         </div>
 
         <p style="font-size: 14px; color: #555; text-align: center; margin-bottom: 20px;">
-            📝 মোট প্রশ্ন: <b>৪১ টি</b> | ⏱ প্রতি প্রশ্নে সময়: <b>২০ সেকেন্ড</b> (মোট ১৩ মিনিট ৪০ সেকেন্ড)<br>
+            📝 মোট প্রশ্ন: <b>৪১ টি</b> | ⏱ প্রতি প্রশ্নে সময়: <b>২০ সেকেন্ড</b><br>
             ✔️ সঠিক উত্তর: <b>+১.০০</b> | ❌ ভুল উত্তর: <b>-০.২৫</b>
         </p>
 
@@ -275,8 +263,8 @@
 </div>
 
 <script>
-    // 🔗 গুগল শিটে রেজাল্ট সেভ করার লিঙ্ক (যদি থাকে)
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6Wc_D4ZS1-A24PwRJ0QFJjpGGbR3WIal3wFYokmhdaWIhrXVgyhcbOwnjrtOYxGsM/exec";
+    // 🔗 গুগল অ্যাপস স্ক্রিপ্ট থেকে পাওয়া URL এখানে দিন
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyLJTmY-S_5cDN3H7AR3mkj3cf51ov9lkd6CFG41MdKz3Qh_LNL0oIE_6cS1b_NgfBZ/exec";
 
     const currentSubject = "English";
     const currentTopic = "Correct Spelling";
@@ -532,11 +520,10 @@
     ];
 
     let timerInterval;
-    const TIME_PER_QUESTION = 20; // প্রতি প্রশ্নে ২০ সেকেন্ড
+    const TIME_PER_QUESTION = 20;
     let totalTime = questionsData.length * TIME_PER_QUESTION; 
     let hasSubmitted = false;
 
-    // ইনফো ব্যাজে তথ্য সেট করা
     document.getElementById('info-subject').innerText = currentSubject;
     document.getElementById('info-topic').innerText = currentTopic;
 
@@ -630,7 +617,7 @@
             // সঠিক উত্তর সবুজ মার্ক করা
             document.getElementById(`label-${qIndex}-${q.answer}`).classList.add('correct-answer');
             
-            // ব্যাখ্যা শো করা
+            // ব্যাখ্যা দেখানো
             document.getElementById(`exp-${qIndex}`).style.display = 'block';
 
             if (selected) {
@@ -646,32 +633,24 @@
                 unattemptedCount++;
             }
 
-            // অপশনগুলো নিষ্ক্রিয় করা
+            // অপশন ব্লক করা
             document.querySelectorAll(`input[name="q${qIndex}"]`).forEach(r => r.disabled = true);
         });
 
         const score = (correctCount * 1) - (wrongCount * 0.25);
         const userName = document.getElementById('user-name').value.trim();
 
-        // গুগল শিটে রেজাল্ট পাঠানো (যদি লিঙ্ক দেওয়া থাকে)
-       // গুগল শিটে রেজাল্ট পাঠানো
-        // গুগল শিটে ফর্ম ডেটা অ্যাসিনক্রোনাসলি পাঠানো
+        // 🚀 ব্যাকগ্রাউন্ডে গুগল শিটে ডেটা পাঠানো (কোনো রিফ্রেশ বা লোডিং হবে না)
         if (GOOGLE_SCRIPT_URL && !GOOGLE_SCRIPT_URL.includes("YOUR_GOOGLE")) {
-            const form = document.getElementById('gsheet-form');
-            form.action = GOOGLE_SCRIPT_URL;
+            const sendUrl = `${GOOGLE_SCRIPT_URL}?name=${encodeURIComponent(userName)}&subject=${encodeURIComponent(currentSubject)}&topic=${encodeURIComponent(currentTopic)}&correct=${correctCount}&wrong=${wrongCount}&unattempted=${unattemptedCount}&score=${score.toFixed(2)}`;
 
-            document.getElementById('gf-name').value = userName;
-            document.getElementById('gf-subject').value = currentSubject;
-            document.getElementById('gf-topic').value = currentTopic;
-            document.getElementById('gf-correct').value = correctCount;
-            document.getElementById('gf-wrong').value = wrongCount;
-            document.getElementById('gf-unattempted').value = unattemptedCount;
-            document.getElementById('gf-score').value = score.toFixed(2);
-
-            form.submit(); // কোনো CORS এরর ছাড়াই ব্যাকগ্রাউন্ডে জমা হয়ে যাবে
+            fetch(sendUrl, {
+                method: 'POST',
+                mode: 'no-cors'
+            });
         }
 
-        // ফলাফল প্রদর্শন
+        // ফলাফল পেজ দেখানো
         document.querySelector('.submit-btn').classList.add('hidden');
         document.getElementById('result-screen').classList.remove('hidden');
 
