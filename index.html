@@ -263,11 +263,21 @@
 </div>
 
 <script>
-    // 🔗 গুগল অ্যাপস স্ক্রিপ্ট থেকে পাওয়া URL এখানে দিন
+    // 🔗 গুগল অ্যাপস স্ক্রিপ্ট থেকে পাওয়া URL এখানে বসান
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyLJTmY-S_5cDN3H7AR3mkj3cf51ov9lkd6CFG41MdKz3Qh_LNL0oIE_6cS1b_NgfBZ/exec";
 
     const currentSubject = "English";
     const currentTopic = "Correct Spelling";
+
+    // 🔴 [অংশ ২-এর ক] IP Address ও Device Info ট্র্যাক করার কোড
+    let userIP = "Unknown";
+    const deviceInfo = navigator.userAgent; // পরীক্ষার্থীর ব্রাউজার ও ডিভাইসের তথ্য
+
+    // পেজ লোড হলেই ব্যাকগ্রাউন্ডে IP সংগ্রহ করবে
+    fetch('https://api.ipify.org?format=json')
+        .then(res => res.json())
+        .then(data => { userIP = data.ip; })
+        .catch(() => { userIP = "Unavailable"; });
 
     // CSV ফাইল থেকে সংগৃহীত ৪১টি প্রশ্ন
     const questionsData = [
@@ -640,9 +650,9 @@
         const score = (correctCount * 1) - (wrongCount * 0.25);
         const userName = document.getElementById('user-name').value.trim();
 
-        // 🚀 ব্যাকগ্রাউন্ডে গুগল শিটে ডেটা পাঠানো (কোনো রিফ্রেশ বা লোডিং হবে না)
+        // 🔴 [অংশ ২-এর খ] গুগল শিটে রেজাল্ট, আইপি এবং ডিভাইস ইনফো পাঠানো
         if (GOOGLE_SCRIPT_URL && !GOOGLE_SCRIPT_URL.includes("YOUR_GOOGLE")) {
-            const sendUrl = `${GOOGLE_SCRIPT_URL}?name=${encodeURIComponent(userName)}&subject=${encodeURIComponent(currentSubject)}&topic=${encodeURIComponent(currentTopic)}&correct=${correctCount}&wrong=${wrongCount}&unattempted=${unattemptedCount}&score=${score.toFixed(2)}`;
+            const sendUrl = `${GOOGLE_SCRIPT_URL}?name=${encodeURIComponent(userName)}&subject=${encodeURIComponent(currentSubject)}&topic=${encodeURIComponent(currentTopic)}&correct=${correctCount}&wrong=${wrongCount}&unattempted=${unattemptedCount}&score=${score.toFixed(2)}&ip=${encodeURIComponent(userIP)}&device=${encodeURIComponent(deviceInfo)}`;
 
             fetch(sendUrl, {
                 method: 'POST',
